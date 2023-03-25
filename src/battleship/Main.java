@@ -5,10 +5,13 @@ import java.util.*;
 public class Main {
     private static final int NUM_ROWS = 10;
     private static final int NUM_COLS = 10;
-    private static int playerShips = 5;
-    private static int computerShips = 5;
-    private static int playerPoint;
-    private static int computerPoint;
+    private static int playerShips;
+    private static int computerShips;
+    private static int playerPoint = 0;
+    private static int computerPoint = 0;
+    private static int PlayerWin;
+    private static int ComputerWin;
+    private static  int matches = 0;
     private static final String[][] GAME_BOARD = new String[NUM_ROWS][NUM_COLS];
     private static final List<String> missed_coordinates = new ArrayList<>();
     private static final Scanner player_input = new Scanner(System.in);
@@ -20,6 +23,9 @@ public class Main {
 
         String response;
         do {
+            Main.matches++;
+            Main.playerShips = 5;
+            Main.computerShips = 5;
             // remove all items from the array
             for (String[] strings : GAME_BOARD) {
                 Arrays.fill(strings, null);
@@ -57,9 +63,18 @@ public class Main {
     }
 
     private static void showResult() {
+        if (playerPoint > computerShips){
+            System.out.println("You Win!!!");
+            Main.PlayerWin++;
+        } else{
+            System.out.println("You Loss!!!");
+            Main.ComputerWin++;
+        }
+        System.out.println("Player Win Count: " + PlayerWin+ " | Player Loss Count: "+(matches-PlayerWin));
         System.out.println("Player's Point: " + playerPoint);
         System.out.println("Player's Ships Left: " + playerShips);
         System.out.println();
+        System.out.println("Computer Win Count: " + ComputerWin+ " | Computer Loss Count: "+(matches-ComputerWin));
         System.out.println("Computer's Point: " + computerPoint);
         System.out.println("Computer's Ships Left: " + computerShips);
         System.out.println();
@@ -140,23 +155,19 @@ public class Main {
             int algorithm = x * 10 + y;
             excludedShips.add(algorithm);
         }
+        System.out.println(excludedShips);
         // Generate computer ships that don't overlap with player ship coordinates
         Random rand = new Random();
         int[][] shipCoordinates = new int[computerShips][2];
-        for (int i = 0; i < computerShips; i++) {
-            int x = rand.nextInt(10);
-            int y = rand.nextInt(10);
-            int algorithm = x * 10 + y;
-
-            // Re-generate if the coordinate overlaps with a player ship coordinate
-            while (excludedShips.contains(algorithm)) {
+        for (int ship=0; ship<computerShips; ship++){
+            int x, y, algorithm;
+            do {
                 x = rand.nextInt(10);
                 y = rand.nextInt(10);
                 algorithm = x * 10 + y;
-            }
+            } while (excludedShips.contains(algorithm));
 
-            int[] coordinates = { x, y };
-            shipCoordinates[i] = coordinates;
+            shipCoordinates[ship] = new int[]{x,y};
             GAME_BOARD[x][y] = "C"; // mark the computer ship on the game board
         }
     }
