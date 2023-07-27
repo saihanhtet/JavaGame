@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://marketplace.canva.com/EAFQY10B9nc/1/0/1600w/canva-navy-illustration-sky-desktop-wallpaper-TcVdTHioGqw.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow-x: hidden;
+        }
+
+        .container {
+            margin: 10px;
+            width: 500px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            color: whitesmoke;
+            backdrop-filter: blur(4px);
+        }
+
+        .container h4 {
+            text-align: center;
+            font-family: monospace;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+        }
+
+        .container form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+
+        .container form .input-field {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            ;
+        }
+
+        .input-field label {
+            flex: 40%;
+        }
+
+        .input-field input {
+            flex: 60%;
+
+        }
+
+        .input-field input[type=text] {
+            width: 100%;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid paleturquoise;
+            background-color: transparent;
+            padding: 0 10px;
+            color: whitesmoke;
+            font-size: 13px;
+            font-family: monospace;
+        }
+
+        .input-field .gender-field {
+            width: 65%;
+            padding: 0 10px;
+        }
+
+        .input-field .gender-field label {
+            padding-left: 10px;
+        }
+
+        .btn {
+            width: 100%;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.4);
+            border: none;
+            border-radius: 10px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        textarea {
+            border-radius: 10px;
+            background-color: transparent;
+            border: 1px solid paleturquoise;
+            color: whitesmoke;
+            padding: 5px 10px;
+        }
+
+        select {
+            flex: 60%;
+            border-radius: 10px;
+            height: 40px;
+            border: 1px solid paleturquoise;
+            background-color: transparent;
+            color: whitesmoke;
+            letter-spacing: 1px;
+        }
+
+        select option {
+            background-color: black;
+            padding: 10px;
+            margin: 40px;
+            background: rgb(6, 6, 53);
+            color: #fff;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+            border: none;
+        }
+
+
+        html::-webkit-scrollbar {
+            width: 2px;
+        }
+
+        html::-webkit-scrollbar-track {
+            background: black;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h4 class="logo"></h4>
+        <form method="post" onsubmit="prompt()" autocomplete="off">
+            <div class="input-field">
+                <label for="firstname">Enter your First Name:</label>
+                <input type="text" name="firstname" id="firstname" required>
+            </div>
+            <div class="input-field">
+                <label for="lastname">Enter your Last Name:</label>
+                <input type="text" name="lastname" id="lastname" required>
+            </div>
+            <div class="input-field">
+                <label for="gender">Enter your Gender:</label>
+                <div class="gender-field">
+                    <label for="male"><input type="radio" name="gender" id="gender-male" value="male">Male</label>
+                    <label for="female"><input type="radio" name="gender" id="gender-female"
+                            value="female">Female</label>
+                </div>
+            </div>
+            <div class="input-field">
+                <label for="Address">Enter your Address:</label>
+                <textarea name="Address" id="Address" cols="30" rows="10"></textarea>
+            </div>
+            <div class="input-field">
+                <label for="course">Choose the course you would like to attend:</label>
+                <select name="course" id="course">
+                    <option value="computer-science">Computer Science</option>
+                    <option value="it-management">IT Management</option>
+                    <option value="art">Arts</option>
+                </select>
+            </div>
+            <div class="input-field">
+                <label for="degree">Select the degree:</label>
+                <select name="degree" id="degree">
+                    <option value="diploma">Diploma</option>
+                    <option value="bachelor">Bachelor</option>
+                    <option value="certificate">Certificate</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script>
+        var typed = new Typed(".logo", {
+            strings: ["Registration Form"],
+            startDelay: 500,
+            typeSpeed: 50,
+            backSpeed: 50,
+            backDelay: 500,
+            loop: true,
+            loopCount: 1,
+            showCursor: false,
+        });
+        function prompt() {
+            alert("You have submitted the information. Please wait for our reply. Thank you");
+        };
+
+
+    </script>
+</body>
+
+</html>
